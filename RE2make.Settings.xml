@@ -76,7 +76,7 @@
 			<Setting Id="Weapon_44"  Label="Spark Shot" State="false"/>
 			<Setting Id="Event_690"  Label="Pick Up Sherry" State="false"/>
 		</Setting>
-			<Setting Id="Map_317"  Label="Reach Lower Sewers (Leon Pawn Bridge, Claire Jump Down)" State="false"/>
+			<Setting Id="Map_317"  Label="Reach Lower Sewers (Leon Castle Plug Bridge, Claire Jump Down)" State="false"/>
 			<Setting Id="Event_650"  Label="Reach Monitor Room" State="false"/>
 			<Setting Id="Item_94"  Label="Rook Plug" State="false"/>
 			<Setting Id="Item_176"  Label="T-Bar Valve Handle" State="false"/>
