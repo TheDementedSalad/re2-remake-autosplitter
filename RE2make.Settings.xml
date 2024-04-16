@@ -1,0 +1,115 @@
+<Settings>
+    <Setting Id="Gas"  Label="Gas Station" State="false">
+		<Setting Id="Event_030"  Label="Meet First Zombie" State="false"/>
+		<Setting Id="Item_77"  Label="Storage Room Key" State="false"/>
+		<Setting Id="Event_050"  Label="Meet Claire/Leon" State="false"/>
+	</Setting>
+	 <Setting Id="R1"  Label="RPD1" State="false">
+		<Setting Id="Event_090"  Label="Go Through the RPD Gates" State="false"/>
+		<Setting Id="Event_093"  Label="Elliot Death" State="false"/>
+		<Setting Id="Event_094"  Label="Saved By Marvin" State="false"/>
+		<Setting Id="Item_82"  Label="Spade Key" State="false"/>
+		<Setting Id="Item_118"  Label="Lion Medallion" State="false"/>
+		<Setting Id="Event_140"  Label="Helicopter Explosion" State="false"/>
+		<Setting Id="Item_131"  Label="Courtyard Key (B Scenario)" State="false"/>
+		<Setting Id="Item_244"  Label="Boltcutters" State="false"/>
+		<Setting Id="Item_86"  Label="Round Handle" State="false"/>
+		<Setting Id="Item_240"  Label="Fuse (Main Hall Shutter)" State="false"/>
+		<Setting Id="Item_34"  Label="Electronic Gadget" State="false"/>
+		<Setting Id="Item_35"  Label="Battery" State="false"/>
+		<Setting Id="Item_31"  Label="Detonator" State="false"/>
+		<Setting Id="Item_81"  Label="Unicorn Medallion" State="false"/>
+		<Setting Id="Item_124"  Label="Maiden Medallion" State="false"/>
+		<Setting Id="Map_350"  Label="Enter Underground Office" State="false"/>
+	</Setting>
+	<Setting Id="R2"  Label="RPD2" State="false">
+		<Setting Id="LS1"  Label="Leon Specific Splits" State="false">
+			<Setting Id="Event_250"  Label="Saved By Ada In Parking Garage" State="false"/>
+			<Setting Id="Event_260"  Label="Meet Ben" State="false"/>
+			<Setting Id="Event_290"  Label="Breaks Ladder" State="false"/>
+			<Setting Id="Item_160"  Label="Club Key" State="false"/>
+		</Setting>
+		<Setting Id="CS1"  Label="Claire Specific Splits" State="false">
+			<Setting Id="Event_251"  Label="Irons Kidnaps Sherry" State="false"/>
+			<Setting Id="Item_169"  Label="Heart Key" State="false"/>
+			<Setting Id="Event_340"  Label="Irons Rings Claire" State="false"/>
+			<Setting Id="Item_98"  Label="Picture Block" State="false"/>
+			<Setting Id="Item_243"  Label="Scissors" State="false"/>
+			<Setting Id="Event_360"  Label="Started Irons Chase" State="false"/>
+			<Setting Id="Item_159"  Label="Orphanage Keys" State="false"/>
+		</Setting>
+		<Setting Id="Event_220"  Label="Start Birkin 1" State="false"/>
+		<Setting Id="Event_230"  Label="Defeat Birkin 1" State="false"/>
+		<Setting Id="Event_240"  Label="Enter Parking Garage" State="false"/>
+		<Setting Id="Item_80"  Label="Crank Handle" State="false"/>
+		<Setting Id="Item_119"  Label="Diamond Key" State="false"/>
+		<Setting Id="Item_136"  Label="Boxed Electrical Part 1" State="false"/>
+		<Setting Id="Item_241"  Label="Fuse (Break Room Hallway)" State="false"/>
+		<Setting Id="Item_130"  Label="Large Gear" State="false"/>
+		<Setting Id="Item_79"  Label="Mechanical Jack Handle" State="false"/>
+		<Setting Id="Item_129"  Label="Small Gear" State="false"/>
+		<Setting Id="Event_300"  Label="Ring Bell Tower" State="false"/>
+		<Setting Id="Item_135"  Label="Boxed Electrical Part 2" State="false"/>
+		<Setting Id="Item_83"  Label="Parking Garage Key Card" State="false"/>
+		<Setting Id="Map_351"  Label="Exit the RPD" State="false"/>
+	</Setting>
+	<Setting Id="Sew1"  Label="Sewers 1" State="false">
+		<Setting Id="LS2"  Label="Leon Specific Splits" State="false">
+			<Setting Id="Event_410"  Label="Meet Kendo" State="false"/>
+			<Setting Id="Event_420"  Label="Start Alligator Chase" State="false"/>
+			<Setting Id="Event_530"  Label="Shot By Annette" State="false"/>
+			<Setting Id="Map_340"  Label="Enter Elevator Room" State="false"/>
+			<Setting Id="Event_559"  Label="Trapped In Incinerator" State="false"/>
+			<Setting Id="Event_580"  Label="Finish Ada" State="false"/>
+		</Setting>
+		<Setting Id="CS2"  Label="Claire Specific Splits" State="false">
+			<Setting Id="Event_475"  Label="Enter Orphanage" State="false"/>
+			<Setting Id="Event_520"  Label="Fall Down the Elevator" State="false"/>
+		</Setting>
+	</Setting>
+	<Setting Id="Sew2"  Label="Sewers 2" State="false">
+		<Setting Id="LS3"  Label="Leon Specific Splits" State="false">
+			<Setting Id="Weapon_43"  Label="Flamethrower" State="false"/>
+			<Setting Id="Event_680"  Label="Help Ada" State="false"/>
+		</Setting>
+		<Setting Id="CS3"  Label="Claire Specific Splits" State="false">
+			<Setting Id="Weapon_44"  Label="Spark Shot" State="false"/>
+			<Setting Id="Event_690"  Label="Pick Up Sherry" State="false"/>
+		</Setting>
+			<Setting Id="Map_317"  Label="Reach Lower Sewers (Leon Pawn Bridge, Claire Jump Down)" State="false"/>
+			<Setting Id="Event_650"  Label="Reach Monitor Room" State="false"/>
+			<Setting Id="Item_94"  Label="Rook Plug" State="false"/>
+			<Setting Id="Item_176"  Label="T-Bar Valve Handle" State="false"/>
+			<Setting Id="Item_194"  Label="Sewers Key" State="false"/>
+			<Setting Id="Item_134"  Label="Queen Plug" State="false"/>
+			<Setting Id="Item_95"  Label="King Plug" State="false"/>
+			<Setting Id="Item_93"  Label="Bishop Plug" State="false"/>
+			<Setting Id="Item_132"  Label="Knight Plug" State="false"/>
+			<Setting Id="Event_672"  Label="Defeat Birkin 2" State="false"/>
+			<Setting Id="Event_700"  Label="Leave Sewers" State="false"/>
+	</Setting>
+	<Setting Id="Lab"  Label="NEST" State="false">
+		<Setting Id="LS4"  Label="Leon Specific Splits" State="false">
+			<Setting Id="Event_760"  Label="Ada Dies" State="false"/>
+			<Setting Id="Weapon_49"  Label="Anti Tank Rocket" State="false"/>
+		</Setting>
+		<Setting Id="CS4"  Label="Leon Specific Splits" State="false">
+			<Setting Id="Event_750"  Label="Cured Sherry" State="false"/>
+			<Setting Id="Weapon_50"  Label="Gatling Gun" State="false"/>
+		</Setting>
+			<Setting Id="Item_200"  Label="ID Wristband (Visitor)" State="false"/>
+			<Setting Id="Item_196"  Label="ID Wristband (General Staff)" State="false"/>
+			<Setting Id="Item_179"  Label="Dispersal Cartridge (Empty)" State="false"/>
+			<Setting Id="Item_180"  Label="Dispersal Cartridge (Solution)" State="false"/>
+			<Setting Id="Item_189"  Label="Signal Modulator" State="false"/>
+			<Setting Id="Item_181"  Label="Dispersal Cartridge (Herbicide)" State="false"/>
+			<Setting Id="Item_197"  Label="ID Wristband (Senior Staff)" State="false"/>
+			<Setting Id="Event_720"  Label="Collect G-Sample / Vaccine" State="false"/>
+			<Setting Id="Event_730"  Label="Start Birkin 3" State="false"/>
+			<Setting Id="Event_732"  Label="Defeat Birkin 3" State="false"/>
+			<Setting Id="Item_183"  Label="Joint Plug" State="false"/>
+			<Setting Id="Event_890"  Label="Leon A End (Get On Train)" State="false"/>
+			<Setting Id="Event_880"  Label="Claire A End (Defeat Birkin 4)" State="false"/>
+			<Setting Id="Event_900"  Label="B Scenario End (Defeat Birkin 5)" State="false"/>
+	</Setting>
+</Settings>
