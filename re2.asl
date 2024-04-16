@@ -1,8 +1,7 @@
 //Resident Evil 2 Remake Autosplitter
 //By CursedToast 1/28/2019
-//VideoGameRoulette & DeathHound 08/26/2023
-//Last updated 16 April 2024
-//Latest version by TheDementedSalad
+//Last updated 08/26/2023
+//New Pointers by VideoGameRoulette & DeathHound
 
 state("re2"){}
 
@@ -22,7 +21,7 @@ init
 	IntPtr GameClock = vars.Helper.ScanRel(3, "48 8b 05 ?? ?? ?? ?? 48 85 c0 75 ?? 45 33 c0 8d 50 ?? 48 8b cd e8 ?? ?? ?? ?? eb");
 	IntPtr EnvironmentStandbyManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 48 8b cb 48 85 d2 0f 84 ?? ?? ?? ?? 41 b1 ?? c6 44 24");
 	IntPtr MainFlowManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 48 8b cf 8b b3");
-	IntPtr SurvivorManager = vars.Helper.ScanRel(3, "48 8b 2d ?? ?? ?? ?? 48 85 ed 75 ?? 45 33 c0 8d 55 ?? 48 8b ce e8 ?? ?? ?? ?? 33 ed");
+	IntPtr SurvivorManager = vars.Helper.ScanRel(3, "48 8b 2d ?? ?? ?? ?? 48 85 ed 75 ?? 45 33 c0 8d 55 ?? 48 8b cf");
 	
 	vars.Helper["EventID"] = vars.Helper.MakeString(TimelineEventManager, 0xA8, 0x20, 0x14);
 	vars.Helper["EventID"].FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
@@ -67,6 +66,8 @@ update
 	if(string.IsNullOrEmpty(current.EventID)){
         current.Event = "";
     }
+	
+	print(current.SurvivorType.ToString());
 }
 
 onStart
