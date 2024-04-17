@@ -66,8 +66,6 @@ update
 	if(string.IsNullOrEmpty(current.EventID)){
         current.Event = "";
     }
-	
-	print(current.SurvivorType.ToString());
 }
 
 onStart
@@ -77,7 +75,7 @@ onStart
 
 start
 {
-	return current.Event != old.Event && old.Event == "001" || current.Event != old.Event && old.Event == "910";
+	return (old.Event == "001" || old.Event == "910") && current.Event != old.Event;
 }
 
 split
@@ -139,5 +137,5 @@ isLoading
 
 reset
 {
-	return current.Event != old.Event && current.Event == "011" || current.Event != old.Event && current.Event == "910";
+	return (current.Event == "011" || current.Event == "910") && current.Event != old.Event;
 }
