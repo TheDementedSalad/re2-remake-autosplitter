@@ -93,11 +93,11 @@
 			<Setting Id="Event_760"  Label="Ada Dies" State="false"/>
 			<Setting Id="Weapon_49"  Label="Anti Tank Rocket" State="false"/>
 		</Setting>
-		<Setting Id="CS4"  Label="Leon Specific Splits" State="false">
+		<Setting Id="CS4"  Label="Claire Specific Splits" State="false">
 			<Setting Id="Event_750"  Label="Cured Sherry" State="false"/>
 			<Setting Id="Weapon_50"  Label="Gatling Gun" State="false"/>
 		</Setting>
-			<Setting Id="Item_200"  Label="ID Wristband (Visitor)" State="false"/>
+			<Setting Id="Item_195"  Label="ID Wristband (Visitor)" State="false"/>
 			<Setting Id="Item_196"  Label="ID Wristband (General Staff)" State="false"/>
 			<Setting Id="Item_179"  Label="Dispersal Cartridge (Empty)" State="false"/>
 			<Setting Id="Item_180"  Label="Dispersal Cartridge (Solution)" State="false"/>
