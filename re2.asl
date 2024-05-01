@@ -9,6 +9,7 @@ startup
 {
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
 	vars.Helper.Settings.CreateFromXml("Components/RE2make.Settings.xml");
+	vars.Helper.StartFileLogger("RE2R_Log.txt");
 }
 
 init
@@ -76,21 +77,23 @@ update
         current.Event = "";
     }
 	
-	if(current.isPause && current.SoundStateValue == 4){
-		game.WriteValue<byte>(game.ReadPointer((IntPtr)vars.Clock) + 0x50, 0);
-	}
-	
-	if(current.SoundStateValue == 9 && !current.Fade6){
-		game.WriteValue<byte>(game.ReadPointer((IntPtr)vars.Clock) + 0x50, 1);
-	}
+	if(settings["NIGT"]){
+		if(current.isPause && current.SoundStateValue == 4){
+			game.WriteValue<byte>(game.ReadPointer((IntPtr)vars.Clock) + 0x50, 0);
+		}
+		
+		if(current.SoundStateValue == 9 && !current.Fade6){
+			game.WriteValue<byte>(game.ReadPointer((IntPtr)vars.Clock) + 0x50, 1);
+		}
 
-	if(current.GameElapsedTime < old.GameElapsedTime && current.GmeStartValue != 1 && current.SoundStateValue == 10){
-		long value1 = old.GameElapsedTime;
-		long value2 = old.DemoSpendingTime;
-		long value3 = old.PauseSpendingTime;
-		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x60) + 0x18, value1);
-		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x60) + 0x20, value2);
-		game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x60) + 0x30, value3);
+		if(current.GameElapsedTime < old.GameElapsedTime && current.GmeStartValue != 1 && current.SoundStateValue == 10){
+			long value1 = old.GameElapsedTime;
+			long value2 = old.DemoSpendingTime;
+			long value3 = old.PauseSpendingTime;
+			game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x60) + 0x18, value1);
+			game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x60) + 0x20, value2);
+			game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x60) + 0x30, value3);
+		}
 	}
 }
 
