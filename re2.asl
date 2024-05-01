@@ -1,7 +1,8 @@
 //Resident Evil 2 Remake Autosplitter
 //By CursedToast 1/28/2019
-//Last updated 08/26/2023
-//New Pointers by VideoGameRoulette & DeathHound
+//By VideoGameRoulette & DeathHound 08/26/2023
+//Sigscans/Rework by TheDementedSalad 
+//Last updated 01 May 2024
 
 state("re2"){}
 
@@ -9,7 +10,7 @@ startup
 {
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
 	vars.Helper.Settings.CreateFromXml("Components/RE2make.Settings.xml");
-	vars.Helper.StartFileLogger("RE2R_Log.txt");
+	//vars.Helper.StartFileLogger("RE2R_Log.txt");
 }
 
 init
@@ -146,8 +147,8 @@ split
 	}
 	
 	// Debug. Comment out before release.
-    if (!string.IsNullOrEmpty(setting))
-    vars.Log(setting);
+	//if (!string.IsNullOrEmpty(setting))
+	//vars.Log(setting);
 
 	if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting)){
 		return true;
