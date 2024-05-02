@@ -142,13 +142,17 @@ split
 		setting = "Map_" + current.MapID;
 	}
 	
+	if((current.MapID == 112 || current.MapID == 261) && current.MapID != old.MapID){
+		setting = "Map_RPD";
+	}
+	
 	if(current.EventID != old.EventID && !string.IsNullOrEmpty(current.EventID)){
 		setting = "Event_" + current.Event;
 	}
 	
 	// Debug. Comment out before release.
-	//if (!string.IsNullOrEmpty(setting))
-	//vars.Log(setting);
+	if (!string.IsNullOrEmpty(setting))
+	vars.Log(setting);
 
 	if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting)){
 		return true;
