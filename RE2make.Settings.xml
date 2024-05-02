@@ -17,7 +17,6 @@
 		<Setting Id="Item_86"  Label="Round Handle" State="false"/>
 		<Setting Id="Item_240"  Label="Fuse (Main Hall Shutter)" State="false"/>
 		<Setting Id="Item_34"  Label="Electronic Gadget" State="false"/>
-		<Setting Id="Item_35"  Label="Battery" State="false"/>
 		<Setting Id="Item_31"  Label="Detonator" State="false"/>
 		<Setting Id="Item_81"  Label="Unicorn Medallion" State="false"/>
 		<Setting Id="Item_124"  Label="Maiden Medallion" State="false"/>
