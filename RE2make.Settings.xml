@@ -6,10 +6,11 @@
 		<Setting Id="Event_050"  Label="Meet Claire/Leon" State="false"/>
 	</Setting>
 	 <Setting Id="R1"  Label="RPD1" State="false">
-		<Setting Id="Event_090"  Label="Go Through the RPD Gates" State="false"/>
+		<Setting Id="Map_RPD"  Label="Enter RPD (A &amp; B)" State="false"/>
 		<Setting Id="Event_093"  Label="Elliot Death" State="false"/>
 		<Setting Id="Event_094"  Label="Saved By Marvin" State="false"/>
 		<Setting Id="Item_82"  Label="Spade Key" State="false"/>
+		<Setting Id="Event_120"  Label="Return to Marvin After Radio Call" State="false"/>
 		<Setting Id="Item_118"  Label="Lion Medallion" State="false"/>
 		<Setting Id="Event_140"  Label="Helicopter Explosion" State="false"/>
 		<Setting Id="Item_131"  Label="Courtyard Key (B Scenario)" State="false"/>
@@ -57,7 +58,7 @@
 		<Setting Id="LS2"  Label="Leon Specific Splits" State="false">
 			<Setting Id="Event_410"  Label="Meet Kendo" State="false"/>
 			<Setting Id="Event_420"  Label="Start Alligator Chase" State="false"/>
-			<Setting Id="Event_530"  Label="Shot By Annette" State="false"/>
+			<Setting Id="Event_530"  Label="Leon Shot By Annette (Ada Start)" State="false"/>
 			<Setting Id="Map_340"  Label="Enter Elevator Room" State="false"/>
 			<Setting Id="Event_559"  Label="Trapped In Incinerator" State="false"/>
 			<Setting Id="Event_580"  Label="Finish Ada" State="false"/>
@@ -70,7 +71,7 @@
 	<Setting Id="Sew2"  Label="Sewers 2" State="false">
 		<Setting Id="LS3"  Label="Leon Specific Splits" State="false">
 			<Setting Id="Weapon_43"  Label="Flamethrower" State="false"/>
-			<Setting Id="Event_680"  Label="Help Ada" State="false"/>
+			<Setting Id="Event_680"  Label="Help Ada After Birkin 2" State="false"/>
 		</Setting>
 		<Setting Id="CS3"  Label="Claire Specific Splits" State="false">
 			<Setting Id="Weapon_44"  Label="Spark Shot" State="false"/>
@@ -114,5 +115,16 @@
 			<Setting Id="Event_890"  Label="Leon A End (Get On Train)" State="false"/>
 			<Setting Id="Event_880"  Label="Claire A End (Defeat Birkin 4)" State="false"/>
 			<Setting Id="Event_900"  Label="B Scenario End (Defeat Birkin 5)" State="false"/>
+	</Setting>
+	<Setting Id="Ext"  Label="Extra Splits" State="false">
+		<Setting Id="Item_114"  Label="Red Book" State="false"/>
+		<Setting Id="Item_115"  Label="Statue's Left Arm" State="false"/>
+		<Setting Id="Item_88"  Label="Scepter" State="false"/>
+		<Setting Id="Item_90"  Label="Jewel" State="false"/>
+		<Setting Id="Item_91"  Label="Bejeweled Box" State="false"/>
+		<Setting Id="Item_87"  Label="S.T.A.R.S. Badge" State="false"/>
+		<Setting Id="Weapon_42"  Label="Grenade Launcher" State="false"/>
+		<Setting Id="Weapon_11"  Label="Shotgun" State="false"/>
+		<Setting Id="Map_312"  Label="Ada Top of First Ladder (Ada Legacy Start)" State="false"/>
 	</Setting>
 </Settings>
