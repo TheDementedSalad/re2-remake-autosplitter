@@ -27,6 +27,7 @@
 		<Setting Id="LS1"  Label="Leon Specific Splits" State="false">
 			<Setting Id="Event_250"  Label="Saved By Ada In Parking Garage" State="false"/>
 			<Setting Id="Event_260"  Label="Meet Ben" State="false"/>
+			<Setting Id="Item_80"  Label="Crank Handle" State="false"/>
 			<Setting Id="Event_290"  Label="Breaks Ladder" State="false"/>
 			<Setting Id="Item_160"  Label="Club Key" State="false"/>
 		</Setting>
@@ -42,7 +43,6 @@
 		<Setting Id="Event_220"  Label="Start Birkin 1" State="false"/>
 		<Setting Id="Event_230"  Label="Defeat Birkin 1" State="false"/>
 		<Setting Id="Event_240"  Label="Enter Parking Garage" State="false"/>
-		<Setting Id="Item_80"  Label="Crank Handle" State="false"/>
 		<Setting Id="Item_119"  Label="Diamond Key" State="false"/>
 		<Setting Id="Item_136"  Label="Boxed Electrical Part 1" State="false"/>
 		<Setting Id="Item_241"  Label="Fuse (Break Room Hallway)" State="false"/>
