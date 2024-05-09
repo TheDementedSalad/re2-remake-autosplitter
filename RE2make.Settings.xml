@@ -116,6 +116,7 @@
 			<Setting Id="Event_890"  Label="Leon A End (Get On Train)" State="false"/>
 			<Setting Id="Event_880"  Label="Claire A End (Defeat Birkin 4)" State="false"/>
 			<Setting Id="Event_900"  Label="B Scenario End (Defeat Birkin 5)" State="false"/>
+			<Setting Id="Results"  Label="Splits on Results Sceen (Most Accurate)" State="false"/>
 	</Setting>
 	<Setting Id="Ext"  Label="Extra Splits" State="false">
 		<Setting Id="Item_114"  Label="Red Book" State="false"/>
