@@ -40,6 +40,7 @@ init
 	vars.Helper["SoundStateValue"] = vars.Helper.Make<byte>(MainFlowManager, 0x68);
 	vars.Helper["GmeStartValue"] = vars.Helper.Make<byte>(MainFlowManager, 0x54);
 	vars.Helper["Scenario"] = vars.Helper.Make<byte>(MainFlowManager, 0x198, 0x1C);
+	vars.Helper["Results"] = vars.Helper.Make<byte>(MainFlowManager, 0x120, 0x10);
 	
 	vars.Helper["Fade6"] = vars.Helper.Make<bool>(FadeManager, 0x50, 0x48, 0x18, 0x68);
 	
@@ -152,6 +153,10 @@ split
 	
 	if(current.EventID != old.EventID && !string.IsNullOrEmpty(current.EventID)){
 		setting = "Event_" + current.Event;
+	}
+
+	if(current.Results == 1 && old.Results != 1){
+		setting = "Results";
 	}
 	
 	// Debug. Comment out before release.
