@@ -79,8 +79,8 @@
 		</Setting>
 			<Setting Id="Map_317"  Label="Reach Lower Sewers (Leon Castle Plug Bridge, Claire Jump Down)" State="false"/>
 			<Setting Id="Event_650"  Label="Reach Monitor Room" State="false"/>
-			<Setting Id="Item_94"  Label="Rook Plug" State="false"/>
 			<Setting Id="Item_176"  Label="T-Bar Valve Handle" State="false"/>
+			<Setting Id="Item_94"  Label="Rook Plug" State="false"/>
 			<Setting Id="Item_194"  Label="Sewers Key" State="false"/>
 			<Setting Id="Item_134"  Label="Queen Plug" State="false"/>
 			<Setting Id="Item_95"  Label="King Plug" State="false"/>
