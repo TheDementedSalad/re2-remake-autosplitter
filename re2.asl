@@ -125,6 +125,9 @@ split
 			if(item != 0 && current.SurvivorType != 2){
 				setting = "Item_" + item;
 			}
+			if((current.Scenario == 2 || current.Scenario == 3) && item == 241){
+				setting = "Item_" + item + "_B";
+			}
 		}
 	}
 	
