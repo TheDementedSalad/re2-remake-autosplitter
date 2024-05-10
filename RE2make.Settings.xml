@@ -1,5 +1,6 @@
 <Settings>
 	<Setting Id="NIGT"  Label="IGT No Revert On Checkpoint Restart (Separate Cat)" State="false"/>
+	<Setting Id="3Dig"  Label="Variable Showing MS to 3 places" State="false"/>
     <Setting Id="Gas"  Label="Gas Station" State="false">
 		<Setting Id="Event_030"  Label="Meet First Zombie" State="false"/>
 		<Setting Id="Item_77"  Label="Storage Room Key" State="false"/>
