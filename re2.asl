@@ -98,11 +98,31 @@ update
 			game.WriteValue<long>(game.ReadPointer(game.ReadPointer((IntPtr)vars.Clock) + 0x60) + 0x30, value3);
 		}
 	}
+
+	if (!settings["3Dig"]){
+		vars.Helper.Texts.RemoveAll();
+	}
+	
+	if (settings["3Dig"]){
+		vars.TotalTimeInSeconds = current.GameElapsedTime - current.DemoSpendingTime - current.PauseSpendingTime;
+		vars.Helper.Texts["Total Time"].Right = TimeSpan.FromSeconds(vars.TotalTimeInSeconds / 1000000.0).ToString(@"hh\:mm\:ss\.fff");
+	}
+	
+	if (settings["3Dig"]){
+		if(current.Results == 1 && old.Results != 1){
+			game.WriteValue<byte>(game.ReadPointer((IntPtr)vars.Clock) + 0x50, 0);
+		}
+	}
 }
 
 onStart
 {
 	vars.completedSplits.Clear();
+
+	if(settings["3Dig"]){
+		vars.Helper.Texts["Total Time"].Left = "Time:";
+		vars.Helper.Texts["Total Time"].Right = "00:00:00.000";
+	}
 }
 
 start
