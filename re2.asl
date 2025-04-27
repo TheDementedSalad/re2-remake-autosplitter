@@ -2,7 +2,7 @@
 //By CursedToast 1/28/2019
 //By VideoGameRoulette & DeathHound 08/26/2023
 //Sigscans/Rework by TheDementedSalad 
-//Last updated 01 May 2024
+//Last updated 27 April 2025
 
 state("re2"){}
 
@@ -25,6 +25,7 @@ init
 	IntPtr MainFlowManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 48 8b cf 8b b3");
 	IntPtr SurvivorManager = vars.Helper.ScanRel(3, "48 8b 2d ?? ?? ?? ?? 48 85 ed 75 ?? 45 33 c0 8d 55 ?? 48 8b cf");
 	IntPtr FadeManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 45 33 c0 48 8b cb 48 85 d2 74 ?? f3 0f 10 1d");
+	IntPtr MovieManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 0f b6 45");
 	
 	vars.Helper["EventID"] = vars.Helper.MakeString(TimelineEventManager, 0xA8, 0x20, 0x14);
 	vars.Helper["EventID"].FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
@@ -41,6 +42,10 @@ init
 	vars.Helper["GmeStartValue"] = vars.Helper.Make<byte>(MainFlowManager, 0x54);
 	vars.Helper["Scenario"] = vars.Helper.Make<byte>(MainFlowManager, 0x198, 0x1C);
 	vars.Helper["Results"] = vars.Helper.Make<byte>(MainFlowManager, 0x120, 0x10);
+	vars.Helper["ResultsExtra"] = vars.Helper.Make<byte>(MainFlowManager, 0x128, 0x10);
+	
+	vars.Helper["DLCEventID"] = vars.Helper.MakeString(MovieManager, 0x58, 0x10, 0x20, 0xB8, 0x18, 0x10, 0x28, 0x0);
+	vars.Helper["DLCEventID"].FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 	
 	vars.Helper["Fade6"] = vars.Helper.Make<bool>(FadeManager, 0x50, 0x48, 0x18, 0x68);
 	
@@ -76,8 +81,17 @@ update
         current.Event = current.EventID.Substring(2,3);
     }
 	
+	
 	if(string.IsNullOrEmpty(current.EventID)){
         current.Event = "";
+    }
+	
+	if(!string.IsNullOrEmpty(current.DLCEventID)){
+        current.DLCEvent = current.DLCEventID.Substring(2,3);
+    }
+	
+	if(string.IsNullOrEmpty(current.DLCEventID)){
+        current.DLCEvent = "";
     }
 
 	if (!settings["3Dig"]){
@@ -102,13 +116,13 @@ onStart
 
 	if(settings["3Dig"]){
 		vars.Helper.Texts["Total Time"].Left = "Time:";
-		vars.Helper.Texts["Total Time"].Right = "00:00:00.000";
+		vars.Helper.Texts["Total Time"].Right = "00:00:00.0000";
 	}
 }
 
 start
 {
-	return (old.Event == "001" || old.Event == "910") && current.Event != old.Event;
+	return (old.Event == "001" || old.Event == "910" || old.Event == "930") && current.Event != old.Event || old.DLCEvent == "990" && current.DLCEvent != old.DLCEvent;
 }
 
 split
@@ -134,22 +148,23 @@ split
 		}
 	}
 	
-	if(!currentWeapon.SequenceEqual(oldWeapon)){
-		int[] delta = (currentWeapon as int[]).Where((v, i) => v != oldWeapon[i]).ToArray();
-
-		foreach (int weapon in delta){
-			if(weapon != 0 && weapon != -1){
-				setting = "Weapon_" + weapon;
-			}
-		}
-	}
-
 	if(current.MapID != old.MapID){
-		setting = "Map_" + current.MapID;
-	}
-	
-	if((current.MapID == 112 || current.MapID == 261) && current.MapID != old.MapID){
-		setting = "Map_RPD";
+		if(current.SurvivorType == 4 || current.SurvivorType == 5){
+			setting = "Hunk_" + current.MapID + "_" + old.MapID;
+		}
+		if(current.SurvivorType == 6){
+			setting = "Kendo_" + current.MapID + "_" + old.MapID;
+		}
+		if(current.SurvivorType == 20){
+			setting = "Kath_" + current.MapID + "_" + old.MapID;
+		}
+		if(current.SurvivorType == 12){
+			setting = "Soldier_" + current.MapID + "_" + old.MapID;
+		}
+		else if((current.MapID == 112 || current.MapID == 261) && (current.SurvivorType == 0 || current.SurvivorType == 1)){
+			setting = "Map_RPD";
+		}
+		else setting = "Map_" + current.MapID;
 	}
 	
 	if(current.EventID != old.EventID && !string.IsNullOrEmpty(current.EventID)){
@@ -158,6 +173,10 @@ split
 
 	if(current.Results == 1 && old.Results != 1){
 		setting = "Results";
+	}
+	
+	if(current.ResultsExtra == 100 && old.Results != 100){
+		setting = "Results_Extra";
 	}
 	
 	// Debug. Comment out before release.
@@ -181,5 +200,5 @@ isLoading
 
 reset
 {
-	return (current.Event == "011" || current.Event == "910") && current.Event != old.Event;
+	return (current.Event == "011" || current.Event == "910" || current.Event == "930") && current.Event != old.Event || current.DLCEvent == "990" && current.DLCEvent != old.DLCEvent;
 }
