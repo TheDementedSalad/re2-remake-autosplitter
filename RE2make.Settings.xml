@@ -129,4 +129,30 @@
 		<Setting Id="Weapon_11"  Label="Shotgun" State="false"/>
 		<Setting Id="Map_312"  Label="Ada Top of First Ladder (Ada Legacy Start)" State="false"/>
 	</Setting>
+	<Setting Id="DLC"  Label="4th Survivor + DLC Splits" State="false">
+		<Setting Id="Hunk"  Label="4th + Tofu Survivor" State="false">
+			<Setting Id="Hunk_332_330"  Label="Monitor Room" State="false"/>
+			<Setting Id="Hunk_352_319"  Label="RPD Underground Stairs" State="false"/>
+			<Setting Id="Hunk_277_353"  Label="RPD Car Park" State="false"/>
+			<Setting Id="Hunk_112_239"  Label="RPD Main Hall" State="false"/>
+			<Setting Id="Hunk_112_249"  Label="RPD Main Hall 2nd Floor" State="false"/>
+			<Setting Id="Hunk_260_268"  Label="RPD Roof 2nd Floor" State="false"/>
+			<Setting Id="Event_938"  Label="4th Survivor End (Final Cutscene)" State="false"/>
+			<Setting Id="Results_Extra"  Label="Splits on Results Sceen 4th + Tofu (Most Accurate)" State="false"/>
+		</Setting>
+		<Setting Id="Kendo"  Label="No Time to Mourn" State="false">
+			<Setting Id="Kendo_227_351"  Label="RPD Car Park" State="false"/>
+			<Setting Id="Kendo_319_352"  Label="Workers Break Room" State="false"/>
+			<Setting Id="Kendo_330_329"  Label="Treatment Pool Room" State="false"/>
+		</Setting>
+		<Setting Id="Kath"  Label="Runaway" State="false">
+			<Setting Id="Event_992"  Label="Escape the Orphanage" State="false"/>
+			<Setting Id="Kath_227_351"  Label="RPD Car Park" State="false"/>
+		</Setting>
+		<Setting Id="Soldier"  Label="Forgotten Soldier" State="false">
+			<Setting Id="Soldier_134_135"  Label="Pump Room" State="false"/>
+			<Setting Id="Soldier_386_133"  Label="Main Shaft" State="false"/>
+		</Setting>
+		<Setting Id="Event_991"  Label="All Ghost Survivor End (Final Cutscene)" State="false"/>
+	</Setting>
 </Settings>
