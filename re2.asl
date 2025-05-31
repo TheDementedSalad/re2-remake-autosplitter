@@ -81,7 +81,6 @@ update
         current.Event = current.EventID.Substring(2,3);
     }
 	
-	
 	if(string.IsNullOrEmpty(current.EventID)){
         current.Event = "";
     }
@@ -175,7 +174,7 @@ split
 	}
 	
 	if(current.DLCEventID != old.DLCEventID && !string.IsNullOrEmpty(current.DLCEventID)){
-		setting = "Event_" + current.DLCEventID;
+		setting = "Event_" + current.DLCEvent;
 	}
 
 	if(current.Results == 1 && old.Results != 1){
