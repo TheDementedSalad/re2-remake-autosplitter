@@ -2,7 +2,7 @@
 //By CursedToast 1/28/2019
 //By VideoGameRoulette & DeathHound 08/26/2023
 //Sigscans/Rework by TheDementedSalad 
-//Last updated 27 April 2025
+//Last updated 01 May 2024
 
 state("re2"){}
 
@@ -139,7 +139,7 @@ split
 		int[] delta = (currentItem as int[]).Where((v, i) => v != oldItem[i]).ToArray();
 
 		foreach (int item in delta){
-			if(item != 0 && current.SurvivorType != 2){
+			if(item != 0 && current.SurvivorType != 2 || current.SurvivorType != 20){
 				setting = "Item_" + item;
 			}
 			if((current.Scenario == 2 || current.Scenario == 3) && item == 241){
@@ -172,6 +172,10 @@ split
 	
 	if(current.EventID != old.EventID && !string.IsNullOrEmpty(current.EventID)){
 		setting = "Event_" + current.Event;
+	}
+	
+	if(current.DLCEventID != old.DLCEventID && !string.IsNullOrEmpty(current.DLCEventID)){
+		setting = "Event_" + current.DLCEventID;
 	}
 
 	if(current.Results == 1 && old.Results != 1){
