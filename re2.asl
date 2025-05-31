@@ -145,6 +145,9 @@ split
 			if((current.Scenario == 2 || current.Scenario == 3) && item == 241){
 				setting = "Item_" + item + "_B";
 			}
+			if(current.SurvivorType == 20 && item == 286){
+				return true;
+			}
 		}
 	}
 	
@@ -152,13 +155,13 @@ split
 		if(current.SurvivorType == 4 || current.SurvivorType == 5){
 			setting = "Hunk_" + current.MapID + "_" + old.MapID;
 		}
-		if(current.SurvivorType == 6){
+		else if(current.SurvivorType == 6){
 			setting = "Kendo_" + current.MapID + "_" + old.MapID;
 		}
-		if(current.SurvivorType == 20){
+		else if(current.SurvivorType == 20){
 			setting = "Kath_" + current.MapID + "_" + old.MapID;
 		}
-		if(current.SurvivorType == 12){
+		else if(current.SurvivorType == 12){
 			setting = "Soldier_" + current.MapID + "_" + old.MapID;
 		}
 		else if((current.MapID == 112 || current.MapID == 261) && (current.SurvivorType == 0 || current.SurvivorType == 1)){
