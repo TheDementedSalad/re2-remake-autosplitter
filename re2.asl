@@ -158,9 +158,13 @@ split
 			}
 		}
 		
-		if (settings.ContainsKey(Itemsetting) && settings[Itemsetting] && vars.completedSplits.Add(Itemsetting)){
+		if (settings.ContainsKey(Itemsetting) && settings[Itemsetting]){
 			vars.PendingSplits++;
 		}
+		
+		// Debug. Comment out before release.
+		if (!string.IsNullOrEmpty(Itemsetting))
+		vars.Log(Itemsetting);
 	}
 	
 	if(!currentWeapon.SequenceEqual(oldWeapon)){
@@ -170,13 +174,13 @@ split
 			Weaponsetting = "Weapon_" + item;
 		}
 		
-		if (settings.ContainsKey(Weaponsetting) && settings[Weaponsetting] && vars.completedSplits.Add(Weaponsetting)){
+		if (settings.ContainsKey(Weaponsetting) && settings[Weaponsetting]){
 			vars.PendingSplits++;
 		}
 		
 		// Debug. Comment out before release.
-		//if (!string.IsNullOrEmpty(Weaponsetting))
-		//vars.Log(Weaponsetting);
+		if (!string.IsNullOrEmpty(Weaponsetting))
+		vars.Log(Weaponsetting);
 	}
 	
 	if(current.MapID != old.MapID){
@@ -197,27 +201,31 @@ split
 		}
 		else Mapsetting = "Map_" + current.MapID;
 		
-		if (settings.ContainsKey(Mapsetting) && settings[Mapsetting] && vars.completedSplits.Add(Mapsetting)){
+		if (settings.ContainsKey(Mapsetting) && settings[Mapsetting]){
 			vars.PendingSplits++;
 		}
 		
 		// Debug. Comment out before release.
-		//if (!string.IsNullOrEmpty(Mapsetting))
-		//vars.Log(Mapsetting);
+		if (!string.IsNullOrEmpty(Mapsetting))
+		vars.Log(Mapsetting);
 	}
 	
 	if(current.EventID != old.EventID && !string.IsNullOrEmpty(current.EventID)){
 		Eventsetting = "Event_" + current.Event;
 		
-		if (settings.ContainsKey(Eventsetting) && settings[Eventsetting] && vars.completedSplits.Add(Eventsetting)){
+		if (settings.ContainsKey(Eventsetting) && settings[Eventsetting]){
 			vars.PendingSplits++;
 		}
+		
+		// Debug. Comment out before release.
+		if (!string.IsNullOrEmpty(Eventsetting))
+		vars.Log(Eventsetting);
 	}
 	
 	if(current.DLCEventID != old.DLCEventID && !string.IsNullOrEmpty(current.DLCEventID)){
 		DLCEventsetting = "Event_" + current.DLCEvent;
 		
-		if (settings.ContainsKey(DLCEventsetting) && settings[DLCEventsetting] && vars.completedSplits.Add(DLCEventsetting)){
+		if (settings.ContainsKey(DLCEventsetting) && settings[DLCEventsetting]){
 			vars.PendingSplits++;
 		}
 	}
@@ -225,7 +233,7 @@ split
 	if(current.Results == 1 && old.Results != 1){
 		Resultsetting = "Results";
 		
-		if (settings.ContainsKey(Resultsetting) && settings[Resultsetting] && vars.completedSplits.Add(Resultsetting)){
+		if (settings.ContainsKey(Resultsetting) && settings[Resultsetting]){
 			vars.PendingSplits++;
 		}
 	}
@@ -233,7 +241,7 @@ split
 	if(current.ResultsExtra == 100 && old.Results != 100){
 		ExtraResultsetting = "Results_Extra";
 		
-		if (settings.ContainsKey(ExtraResultsetting) && settings[ExtraResultsetting] && vars.completedSplits.Add(ExtraResultsetting)){
+		if (settings.ContainsKey(ExtraResultsetting) && settings[ExtraResultsetting]){
 			vars.PendingSplits++;
 		}
 	}
