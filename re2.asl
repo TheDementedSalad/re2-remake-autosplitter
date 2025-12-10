@@ -266,6 +266,10 @@ split
 		vars.completedSplits.Add(Itemsetting);
 		vars.completedSplits.Add(Weaponsetting);
 		vars.completedSplits.Add(Mapsetting);
+		vars.completedSplits.Add(Eventsetting);
+		vars.completedSplits.Add(DLCEventsetting);
+		vars.completedSplits.Add(Resultsetting);
+		vars.completedSplits.Add(ExtraResultsetting);
 		return true;
 	}
 	
@@ -284,5 +288,5 @@ isLoading
 
 reset
 {
-	return (current.Event == "011" || current.Event == "910" || current.Event == "930") && current.Event != old.Event || current.DLCEvent == "990" && current.DLCEvent != old.DLCEvent;
+	//return (current.Event == "011" || current.Event == "910" || current.Event == "930") && current.Event != old.Event || current.DLCEvent == "990" && current.DLCEvent != old.DLCEvent;
 }
