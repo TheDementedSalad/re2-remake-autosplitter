@@ -158,8 +158,10 @@ split
 			}
 		}
 		
-		if (settings.ContainsKey(Itemsetting) && settings[Itemsetting]){
-			vars.PendingSplits++;
+		if(!vars.completedSplits.Contains(Itemsetting)){
+			if (settings.ContainsKey(Itemsetting) && settings[Itemsetting]){
+				vars.PendingSplits++;
+			}
 		}
 		
 		// Debug. Comment out before release.
@@ -174,8 +176,10 @@ split
 			Weaponsetting = "Weapon_" + item;
 		}
 		
-		if (settings.ContainsKey(Weaponsetting) && settings[Weaponsetting]){
-			vars.PendingSplits++;
+		if(!vars.completedSplits.Contains(Weaponsetting)){
+			if (settings.ContainsKey(Weaponsetting) && settings[Weaponsetting]){
+				vars.PendingSplits++;
+			}
 		}
 		
 		// Debug. Comment out before release.
@@ -201,8 +205,10 @@ split
 		}
 		else Mapsetting = "Map_" + current.MapID;
 		
-		if (settings.ContainsKey(Mapsetting) && settings[Mapsetting]){
-			vars.PendingSplits++;
+		if(!vars.completedSplits.Contains(Mapsetting)){
+			if (settings.ContainsKey(Mapsetting) && settings[Mapsetting]){
+				vars.PendingSplits++;
+			}
 		}
 		
 		// Debug. Comment out before release.
@@ -213,11 +219,13 @@ split
 	if(current.EventID != old.EventID && !string.IsNullOrEmpty(current.EventID)){
 		Eventsetting = "Event_" + current.Event;
 		
-		if (settings.ContainsKey(Eventsetting) && settings[Eventsetting]){
-			vars.PendingSplits++;
+		if(!vars.completedSplits.Contains(Eventsetting)){
+			if (settings.ContainsKey(Eventsetting) && settings[Eventsetting]){
+				vars.PendingSplits++;
+			}
 		}
 		
-		// Debug. Comment out before release.
+		// ebug. Comment out before release.
 		if (!string.IsNullOrEmpty(Eventsetting))
 		vars.Log(Eventsetting);
 	}
@@ -225,33 +233,43 @@ split
 	if(current.DLCEventID != old.DLCEventID && !string.IsNullOrEmpty(current.DLCEventID)){
 		DLCEventsetting = "Event_" + current.DLCEvent;
 		
-		if (settings.ContainsKey(DLCEventsetting) && settings[DLCEventsetting]){
-			vars.PendingSplits++;
+		if(!vars.completedSplits.Contains(DLCEventsetting)){
+			if (settings.ContainsKey(DLCEventsetting) && settings[DLCEventsetting]){
+				vars.PendingSplits++;
+			}
 		}
 	}
 
 	if(current.Results == 1 && old.Results != 1){
 		Resultsetting = "Results";
 		
-		if (settings.ContainsKey(Resultsetting) && settings[Resultsetting]){
-			vars.PendingSplits++;
+		if(!vars.completedSplits.Contains(Resultsetting)){
+			if (settings.ContainsKey(Resultsetting) && settings[Resultsetting]){
+				vars.PendingSplits++;
+			}
 		}
 	}
 	
 	if(current.ResultsExtra == 100 && old.Results != 100){
 		ExtraResultsetting = "Results_Extra";
 		
-		if (settings.ContainsKey(ExtraResultsetting) && settings[ExtraResultsetting]){
-			vars.PendingSplits++;
+		if(!vars.completedSplits.Contains(ExtraResultsetting)){
+			if (settings.ContainsKey(ExtraResultsetting) && settings[ExtraResultsetting]){
+				vars.PendingSplits++;
+			}
 		}
 	}
 	
-	if (vars.PendingSplits > 0 && (vars.completedSplits.Add(Itemsetting) || vars.completedSplits.Add(Weaponsetting) || vars.completedSplits.Add(Eventsetting) || vars.completedSplits.Add(DLCEventsetting) ||
-		vars.completedSplits.Add(Resultsetting) || vars.completedSplits.Add(ExtraResultsetting)))
+	if (vars.PendingSplits > 0)
 	{
 		vars.PendingSplits--;
+		vars.completedSplits.Add(Itemsetting);
+		vars.completedSplits.Add(Weaponsetting);
+		vars.completedSplits.Add(Mapsetting);
 		return true;
 	}
+	
+	else return false;
 }
 
 gameTime
