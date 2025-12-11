@@ -11,8 +11,6 @@ startup
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
 	vars.Helper.Settings.CreateFromXml("Components/RE2make.Settings.xml");
 	//vars.Helper.StartFileLogger("RE2R_Log.txt");
-	
-	vars.PendingSplits = 0;
 }
 
 init
@@ -114,7 +112,6 @@ update
 onStart
 {
 	vars.completedSplits.Clear();
-	vars.PendingSplits = 0;
 
 	if(settings["3Dig"]){
 		vars.Helper.Texts["Total Time"].Left = "Time:";
@@ -129,13 +126,7 @@ start
 
 split
 {
-	string Itemsetting = "";
-	string Weaponsetting = "";
-	string Mapsetting = "";
-	string Eventsetting = "";
-	string DLCEventsetting = "";
-	string Resultsetting = "";
-	string ExtraResultsetting = "";
+	string setting = "";
 	
 	int[] currentItem = (current.item as int[]);
 	int[] oldItem = (old.item as int[]);
@@ -148,132 +139,59 @@ split
 
 		foreach (int item in delta){
 			if(item != 0 && current.SurvivorType != 2 || current.SurvivorType != 20){
-				Itemsetting = "Item_" + item;
+				setting = "Item_" + item;
 			}
 			if((current.Scenario == 2 || current.Scenario == 3) && item == 241){
-				Itemsetting = "Item_" + item + "_B";
+				setting = "Item_" + item + "_B";
 			}
 			if(current.SurvivorType == 20 && item == 286){
 				return true;
 			}
 		}
-		
-		if(!vars.completedSplits.Contains(Itemsetting)){
-			if (settings.ContainsKey(Itemsetting) && settings[Itemsetting]){
-				vars.PendingSplits++;
-			}
-		}
-		
-		// Debug. Comment out before release.
-		if (!string.IsNullOrEmpty(Itemsetting))
-		vars.Log(Itemsetting);
-	}
-	
-	if(!currentWeapon.SequenceEqual(oldWeapon)){
-		int[] delta = (currentWeapon as int[]).Where((v, i) => v != oldWeapon[i]).ToArray();
-
-		foreach (int item in delta){
-			Weaponsetting = "Weapon_" + item;
-		}
-		
-		if(!vars.completedSplits.Contains(Weaponsetting)){
-			if (settings.ContainsKey(Weaponsetting) && settings[Weaponsetting]){
-				vars.PendingSplits++;
-			}
-		}
-		
-		// Debug. Comment out before release.
-		if (!string.IsNullOrEmpty(Weaponsetting))
-		vars.Log(Weaponsetting);
 	}
 	
 	if(current.MapID != old.MapID){
 		if(current.SurvivorType == 4 || current.SurvivorType == 5){
-			Mapsetting = "Hunk_" + current.MapID + "_" + old.MapID;
+			setting = "Hunk_" + current.MapID + "_" + old.MapID;
 		}
 		else if(current.SurvivorType == 6){
-			Mapsetting = "Kendo_" + current.MapID + "_" + old.MapID;
+			setting = "Kendo_" + current.MapID + "_" + old.MapID;
 		}
 		else if(current.SurvivorType == 20){
-			Mapsetting = "Kath_" + current.MapID + "_" + old.MapID;
+			setting = "Kath_" + current.MapID + "_" + old.MapID;
 		}
 		else if(current.SurvivorType == 12){
-			Mapsetting = "Soldier_" + current.MapID + "_" + old.MapID;
+			setting = "Soldier_" + current.MapID + "_" + old.MapID;
 		}
 		else if((current.MapID == 112 || current.MapID == 261) && (current.SurvivorType == 0 || current.SurvivorType == 1)){
-			Mapsetting = "Map_RPD";
+			setting = "Map_RPD";
 		}
-		else Mapsetting = "Map_" + current.MapID;
-		
-		if(!vars.completedSplits.Contains(Mapsetting)){
-			if (settings.ContainsKey(Mapsetting) && settings[Mapsetting]){
-				vars.PendingSplits++;
-			}
-		}
-		
-		// Debug. Comment out before release.
-		if (!string.IsNullOrEmpty(Mapsetting))
-		vars.Log(Mapsetting);
+		else setting = "Map_" + current.MapID;
 	}
 	
 	if(current.EventID != old.EventID && !string.IsNullOrEmpty(current.EventID)){
-		Eventsetting = "Event_" + current.Event;
-		
-		if(!vars.completedSplits.Contains(Eventsetting)){
-			if (settings.ContainsKey(Eventsetting) && settings[Eventsetting]){
-				vars.PendingSplits++;
-			}
-		}
-		
-		// ebug. Comment out before release.
-		if (!string.IsNullOrEmpty(Eventsetting))
-		vars.Log(Eventsetting);
+		setting = "Event_" + current.Event;
 	}
 	
 	if(current.DLCEventID != old.DLCEventID && !string.IsNullOrEmpty(current.DLCEventID)){
-		DLCEventsetting = "Event_" + current.DLCEvent;
-		
-		if(!vars.completedSplits.Contains(DLCEventsetting)){
-			if (settings.ContainsKey(DLCEventsetting) && settings[DLCEventsetting]){
-				vars.PendingSplits++;
-			}
-		}
+		setting = "Event_" + current.DLCEvent;
 	}
 
 	if(current.Results == 1 && old.Results != 1){
-		Resultsetting = "Results";
-		
-		if(!vars.completedSplits.Contains(Resultsetting)){
-			if (settings.ContainsKey(Resultsetting) && settings[Resultsetting]){
-				vars.PendingSplits++;
-			}
-		}
+		setting = "Results";
 	}
 	
 	if(current.ResultsExtra == 100 && old.Results != 100){
-		ExtraResultsetting = "Results_Extra";
-		
-		if(!vars.completedSplits.Contains(ExtraResultsetting)){
-			if (settings.ContainsKey(ExtraResultsetting) && settings[ExtraResultsetting]){
-				vars.PendingSplits++;
-			}
-		}
+		setting = "Results_Extra";
 	}
 	
-	if (vars.PendingSplits > 0)
-	{
-		vars.PendingSplits--;
-		vars.completedSplits.Add(Itemsetting);
-		vars.completedSplits.Add(Weaponsetting);
-		vars.completedSplits.Add(Mapsetting);
-		vars.completedSplits.Add(Eventsetting);
-		vars.completedSplits.Add(DLCEventsetting);
-		vars.completedSplits.Add(Resultsetting);
-		vars.completedSplits.Add(ExtraResultsetting);
+	// Debug. Comment out before release.
+	if (!string.IsNullOrEmpty(setting))
+	vars.Log(setting);
+
+	if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting)){
 		return true;
 	}
-	
-	else return false;
 }
 
 gameTime
@@ -288,5 +206,5 @@ isLoading
 
 reset
 {
-	//return (current.Event == "011" || current.Event == "910" || current.Event == "930") && current.Event != old.Event || current.DLCEvent == "990" && current.DLCEvent != old.DLCEvent;
+	return (current.Event == "011" || current.Event == "910" || current.Event == "930") && current.Event != old.Event || current.DLCEvent == "990" && current.DLCEvent != old.DLCEvent;
 }
