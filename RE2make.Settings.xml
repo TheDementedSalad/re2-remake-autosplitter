@@ -6,9 +6,10 @@
 		<Setting Id="Event_050"  Label="Meet Claire/Leon" State="false"/>
 	</Setting>
 	 <Setting Id="R1"  Label="RPD1" State="false">
-		<Setting Id="Map_RPD"  Label="Enter RPD (A &amp; B) Every Time You Enter Map" State="false"/>
+		<Setting Id="Map_RPD"  Label="Enter RPD (A &amp; B)" State="false"/>
 		<Setting Id="Item_241_B"  Label="Fuse (Break Room Hallway B Scenario)" State="false"/>
 		<Setting Id="Event_093"  Label="Elliot Death" State="false"/>
+		<Setting Id="Event_094"  Label="Saved By Marvin" State="false"/>
 		<Setting Id="Item_82"  Label="Spade Key" State="false"/>
 		<Setting Id="Event_120"  Label="Return to Marvin After Radio Call" State="false"/>
 		<Setting Id="Item_118"  Label="Lion Medallion" State="false"/>
