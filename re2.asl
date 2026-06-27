@@ -11,6 +11,38 @@ startup
 	Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
 	vars.Helper.Settings.CreateFromXml("Components/RE2make.Settings.xml");
 	//vars.Helper.StartFileLogger("RE2R_Log.txt");
+
+	#region TextComponent
+		vars.lcCache = new Dictionary<string, LiveSplit.UI.Components.ILayoutComponent>();
+		vars.SetText = (Action<string, object>)((text1, text2) =>
+		{
+			const string FileName = "LiveSplit.Text.dll";
+			LiveSplit.UI.Components.ILayoutComponent lc;
+
+			if (!vars.lcCache.TryGetValue(text1, out lc))
+			{
+				lc = timer.Layout.LayoutComponents.Reverse().Cast<dynamic>()
+					.FirstOrDefault(llc => llc.Path.EndsWith(FileName) && llc.Component.Settings.Text1 == text1)
+					?? LiveSplit.UI.Components.ComponentManager.LoadLayoutComponent(FileName, timer);
+
+				vars.lcCache.Add(text1, lc);
+			}
+
+			if (!timer.Layout.LayoutComponents.Contains(lc)) timer.Layout.LayoutComponents.Add(lc);
+			dynamic tc = lc.Component;
+			tc.Settings.Text1 = text1;
+			tc.Settings.Text2 = text2.ToString();
+		});
+		vars.RemoveText = (Action<string>)(text1 =>
+		{
+			LiveSplit.UI.Components.ILayoutComponent lc;
+			if (vars.lcCache.TryGetValue(text1, out lc))
+			{
+				timer.Layout.LayoutComponents.Remove(lc);
+				vars.lcCache.Remove(text1);
+			}
+		});
+	#endregion
 }
 
 init
@@ -26,6 +58,7 @@ init
 	IntPtr SurvivorManager = vars.Helper.ScanRel(3, "48 8b 2d ?? ?? ?? ?? 48 85 ed 75 ?? 45 33 c0 8d 55 ?? 48 8b cf");
 	IntPtr FadeManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 45 33 c0 48 8b cb 48 85 d2 74 ?? f3 0f 10 1d");
 	IntPtr MovieManager = vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 0f b6 45");
+	IntPtr GameRankSystem =vars.Helper.ScanRel(3, "48 8b 15 ?? ?? ?? ?? 0f 5a f6 48 83 78");
 	
 	vars.Helper["EventID"] = vars.Helper.MakeString(TimelineEventManager, 0xA8, 0x20, 0x14);
 	vars.Helper["EventID"].FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
@@ -48,6 +81,8 @@ init
 	vars.Helper["DLCEventID"].FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 	
 	vars.Helper["Fade6"] = vars.Helper.Make<bool>(FadeManager, 0x50, 0x48, 0x18, 0x68);
+
+	vars.Helper["DARankPoints"] = vars.Helper.Make<float>(GameRankSystem, 0x5C);
 	
 	vars.Inv = InventoryManager;
 	vars.Clock = GameClock;
@@ -62,12 +97,22 @@ init
 		=> new DeepPointer(vars.Inv, 0x50, 0x98, 0x10, 0x20 + (i * 8), 0x18, 0x10, 0x14).Deref<int>(game))
 		.ToArray();
 
+	#region Text Component
+		vars.SetTextIfEnabled = (Action<string, string, object>)((settingId, label, value) =>
+		{
+			if (settings[settingId]) vars.SetText(label, value);
+			else vars.RemoveText(label);
+		});
+	#endregion
+	current.DARankPoints = 0;
 }
 
 update
 {
 	vars.Helper.Update();
 	vars.Helper.MapPointers();
+
+	vars.SetTextIfEnabled("DA", "Damage Adjustment", current.DARankPoints);
 	
 	current.item = new int[20].Select((_, i)
 		=> new DeepPointer(vars.Inv, 0x50, 0x98, 0x10, 0x20 + (i * 8), 0x18, 0x10, 0x10).Deref<int>(game))
