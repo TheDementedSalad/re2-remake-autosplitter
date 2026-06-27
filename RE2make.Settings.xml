@@ -1,5 +1,5 @@
 <Settings>
-	<Setting Id="DA" Label="Damage Adjustment Layout Addition for Verification" State="true" />
+	<Setting Id="DA" Label="Difficulty Adjustment Layout Addition for Verification" State="true" />
 	<Setting Id="3Dig"  Label="Variable Showing MS to 3 places" State="false"/>
     <Setting Id="Gas"  Label="Gas Station" State="false">
 		<Setting Id="Event_030"  Label="Meet First Zombie" State="false"/>
