@@ -112,7 +112,7 @@ update
 	vars.Helper.Update();
 	vars.Helper.MapPointers();
 
-	vars.SetTextIfEnabled("DA", "Damage Adjustment", current.DARankPoints);
+	vars.SetTextIfEnabled("DA", "Difficulty Adjustment", current.DARankPoints);
 	
 	current.item = new int[20].Select((_, i)
 		=> new DeepPointer(vars.Inv, 0x50, 0x98, 0x10, 0x20 + (i * 8), 0x18, 0x10, 0x10).Deref<int>(game))
